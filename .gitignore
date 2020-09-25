@@ -1,2 +1,30 @@
-*.class
-*.log
+## Emacs
+*~
+\#*\#
+
+## SBT
+target
+project/project
+
+## IDEA
+.idea
+*.iml
+
+## Ensime
+.ensime
+.ensime_cache/**
+ensime.sbt
+
+## Metals
+.bloop/**
+.metals/**
+project/.bloop/**
+project/metals.sbt
+.jvmopts
+*.worksheet.sc
+
+## VS Code
+cds.code-workspace
+
+*.tgz
+.DS_Store
