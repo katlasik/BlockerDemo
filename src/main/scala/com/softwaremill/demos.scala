@@ -4,7 +4,7 @@ import java.nio.file.{Files, Path, Paths}
 import java.util.concurrent.Executors
 
 import cats.effect.{Blocker, ExitCode, IO, IOApp}
-import cats.implicits._
+import cats.syntax.all._
 import softwaremill._
 
 import scala.concurrent.{ExecutionContext, ExecutionContextExecutorService}
