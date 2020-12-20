@@ -16,10 +16,11 @@ package object softwaremill {
       _ <- showThread
     } yield ()
 
-  def readLineBlocking: IO[String] = for {
-    line <- IO(StdIn.readLine())
-    _ <- showThread
-  } yield line
+  def readLineBlocking: IO[String] =
+    for {
+      line <- IO(StdIn.readLine())
+      _ <- showThread
+    } yield line
 
   def getFileSizeBlocking(path: String): IO[Long] =
     for {
@@ -36,16 +37,19 @@ package object softwaremill {
     } yield lines
 
   def showThread: IO[Unit] =
-    IO.delay(println(
-      s"${Console.RED}<<Operation executed on ${Thread.currentThread().getName}>>${Console.RESET}"
-    ))
+    IO.delay(
+      println(
+        s"${Console.RED}<<Operation executed on ${Thread.currentThread().getName}>>${Console.RESET}"
+      )
+    )
 
-  val BlockingEC: ExecutionContextExecutorService = ExecutionContext.fromExecutorService(
-    Executors.newCachedThreadPool((r: Runnable) => {
-      val t = new Thread(r)
-      t.setName(s"blocking-ec-${t.getName()}")
-      t
-    })
-  )
+  val BlockingEC: ExecutionContextExecutorService =
+    ExecutionContext.fromExecutorService(
+      Executors.newCachedThreadPool((r: Runnable) => {
+        val t = new Thread(r)
+        t.setName(s"blocking-ec-${t.getName()}")
+        t
+      })
+    )
 
 }
